@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_provider/models/TODOModel.dart';
 import 'package:todo_provider/widgets/LocalClock.dart';
+import 'package:todo_provider/widgets/MyListWidget.dart';
 
 class MyHome extends StatelessWidget {
   @override
@@ -16,40 +17,7 @@ class MyHome extends StatelessWidget {
       body: Column(
         children: <Widget>[
           LocalClock(),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  topRight: Radius.circular(50),
-                ),
-              ),
-              child: ListView.builder(
-                itemCount: data.taskList.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 8, left: 16, right: 16),
-                    child: ListTile(
-                      contentPadding: EdgeInsets.fromLTRB(32, 8, 32, 8),
-                      title: Text(
-                        data.taskList[index].getTitle,
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Text(
-                        data.taskList[index].getDetail,
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      trailing: Icon(
-                        Icons.check_circle,
-                        color: Colors.green,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
+          MyListApp(data: data),
         ],
       ),
       floatingActionButton: FloatingActionButton(

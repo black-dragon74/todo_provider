@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'TaskModel.dart';
 
-class TODOModel extends ChangeNotifier {
+class TODOModel with ChangeNotifier {
   /// A list of all the tasks that needs to be done
   /// Stores instances of [TaskModel]
   List<TaskModel> taskList = [
